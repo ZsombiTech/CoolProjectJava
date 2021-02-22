@@ -41,7 +41,7 @@ public class LoginController extends BaseController<Window>{
 		User user = userService.getUserByLoginName(loginName.getValue());
 		
 		if(user.getPassword().equals(password.getValue())) {
-			Executions.sendRedirect("/user.zul");
+			Executions.sendRedirect("/content.zul");
 
 		}else {
 			password.setValue(null);
