@@ -1,5 +1,7 @@
 package hu.my.coolproject.domain;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,13 +12,18 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "rights")
-public class Rights {
+public class Rights  implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID", nullable = false, unique = true)
 	private long id;
 	
-	@Column(name = "KEY_TEXT", length = 64, nullable = false)
+	@Column(name = "KEY_TEXT", length = 64, nullable = false, unique = true)
 	private String keyText;
 
 	@Column(name = "NAME", length = 64, nullable = false)

@@ -4,17 +4,25 @@
 		<grid>
 			<rows>
 				<row>
-					<label value="User:  " width="150px" />
+					<label value="Key Text:  " width="150px" />
 					<hlayout>
-						<textbox id="rightUS" width="150px"
+						<textbox id="rightsKeyText" width="150px"
 							tabindex="1" />
 					</hlayout>
 					
 				</row>
 				<row>
-					<label value="Right:  " width="150px" />
+					<label value="Name: " width="150px" />
 					<hlayout>
-						<textbox id="rightRI" width="150px"
+						<textbox id="rightsName" width="150px"
+							tabindex="1" />
+					</hlayout>
+					
+				</row>
+				<row>
+					<label value="Comment: " width="150px" />
+					<hlayout>
+						<textbox id="rightsComment" width="150px"
 							tabindex="1" />
 					</hlayout>
 					
