@@ -1,0 +1,27 @@
+<zk>
+	<window apply="hu.my.coolproject.controllers.RankController">
+		<vbox>
+		<grid>
+			<rows>
+				<row>
+					<label value="Rank:  " width="150px" />
+					<hlayout>
+						<textbox id="rankTB" width="150px"
+							tabindex="1" />
+					</hlayout>
+				</row>
+				
+				<row>
+					<cell colspan="2" style="text-align:center">
+						<vlayout>
+							<button label="Submit" id="save"
+								width="100px" height="30px" />
+						</vlayout>
+					</cell>
+				</row>
+			</rows>
+		</grid>
+		<space></space>
+		</vbox>
+	</window>
+</zk>

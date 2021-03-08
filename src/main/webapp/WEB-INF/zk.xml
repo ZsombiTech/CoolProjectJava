@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk>
+
+	<richlet>
+		<richlet-name>Test</richlet-name>
+		<richlet-class>org.zkoss.zkdemo.test.TestRichlet</richlet-class>
+
+	</richlet>
+	<richlet-mapping>
+		<richlet-name>Test</richlet-name>
+		<url-pattern>/test/*</url-pattern>
+	</richlet-mapping>
+
+	<!-- Optional -->
+	<device-config>
+		<device-type>ajax</device-type>
+		<timeout-uri>/timeout.zul</timeout-uri>
+
+	</device-config>
+
+	<!-- Optional -->
+	<listener>
+		<description>[Optional] Mointor the statistic</description>
+		<listener-class>org.zkoss.zk.ui.util.Statistic</listener-class>
+	</listener>
+
+	<!-- required -->
+	<listener>
+
+		<listener-class>org.zkoss.zkmax.au.websocket.WebSocketWebAppInit
+		</listener-class>
+	</listener>
+
+	<!-- optional -->
+	<coolproject-property>
+
+		<name>org.zkoss.zkmax.au.websocket.WebSocketEndPoint.urlPattern</name>
+
+		<value>/coolproject/</value>
+	</coolproject-property>
+
+
+</zk>
