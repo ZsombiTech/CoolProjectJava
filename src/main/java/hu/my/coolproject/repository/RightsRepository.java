@@ -10,4 +10,6 @@ public interface RightsRepository {
 	public void saveRights(Rights rights);
 
 	public Rights getRightsByID(long id);
+
+	public void deleteRights(Rights rights);
 }

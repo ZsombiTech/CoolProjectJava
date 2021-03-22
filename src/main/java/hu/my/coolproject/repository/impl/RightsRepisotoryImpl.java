@@ -22,11 +22,18 @@ public class RightsRepisotoryImpl extends DbSessionProvider implements RightsRep
 		getCoolProjectSession().merge(rights);
 		
 	}
+	
 
 	@Override
 	public Rights getRightsByID(long id) {
 		String hql = "SELECT a FROM Rights a WHERE a.id = :id";
 		Query<Rights> query = getCoolProjectSession().createQuery(hql, Rights.class);
 		return query.setParameter("id", id).getSingleResult();
+	}
+
+	@Override
+	public void deleteRights(Rights rights) {
+		getCoolProjectSession().delete(rights);
+		
 	}
 }

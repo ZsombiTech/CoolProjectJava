@@ -34,6 +34,12 @@ public class RightsServiceImpl implements RightsService{
 	public Rights getRightsByID(long id) {
 		return rightsRepository.getRightsByID(id);
 	}
+
+	@Override
+	public void deleteRights(Rights rights) {
+		rightsRepository.deleteRights(rights);
+		
+	}
 	
 		
 }

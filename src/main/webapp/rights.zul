@@ -1,43 +1,51 @@
 <zk>
 	<window apply="hu.my.coolproject.controllers.RightsController">
 		<vbox>
-		<grid>
-			<rows>
-				<row>
-					<label value="Key Text:  " width="150px" />
-					<hlayout>
-						<textbox id="rightsKeyText" width="150px"
-							tabindex="1" />
-					</hlayout>
-					
-				</row>
-				<row>
-					<label value="Name: " width="150px" />
-					<hlayout>
-						<textbox id="rightsName" width="150px"
-							tabindex="1" />
-					</hlayout>
-					
-				</row>
-				<row>
-					<label value="Comment: " width="150px" />
-					<hlayout>
-						<textbox id="rightsComment" width="150px"
-							tabindex="1" />
-					</hlayout>
-					
-				</row>
-				<row>
-					<cell colspan="2" style="text-align:center">
-						<vlayout>
-							<button label="Submit" id="save"
-								width="100px" height="30px" />
-						</vlayout>
-					</cell>
-				</row>
-			</rows>
-		</grid>
-		<space></space>
+			<grid>
+				<rows>
+					<row>
+						<label value="Key Text:  " width="150px" />
+						<hlayout>
+							<textbox id="rightsKeyText" width="150px"
+								tabindex="1" />
+						</hlayout>
+
+					</row>
+					<row>
+						<label value="Name: " width="150px" />
+						<hlayout>
+							<textbox id="rightsName" width="150px"
+								tabindex="1" />
+						</hlayout>
+
+					</row>
+					<row>
+						<label value="Comment: " width="150px" />
+						<hlayout>
+							<textbox id="rightsComment" width="150px"
+								tabindex="1" />
+						</hlayout>
+
+					</row>
+					<row>
+						<cell colspan="2" style="text-align:center">
+							<vlayout>
+								<button label="Submit" id="save"
+									width="100px" height="30px" />
+							</vlayout>
+						</cell>
+					</row>
+				</rows>
+			</grid>
+			<space></space>
 		</vbox>
+		<grid hflex="max" id="rigthsList">
+			<columns>
+				<column hflex="1" label="Key Text" />
+				<column hflex="1" label="Name" />
+				<column hflex="1" label="Comment" />
+				<column width="90px" label="Torles" />
+			</columns>
+		</grid>
 	</window>
 </zk>
