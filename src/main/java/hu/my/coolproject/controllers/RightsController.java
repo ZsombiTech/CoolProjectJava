@@ -48,6 +48,9 @@ public class RightsController extends BaseController<Window> {
 
 	@Listen(Events.ON_CLICK + "=#save")
 	public void save(Event event) {
+		if(!validateInput()) {
+			return;
+		}
 		Rights right = new Rights();
 		right.setKeyText(rightsKeyText.getValue());
 		right.setName(rightsName.getValue());
@@ -66,6 +69,23 @@ public class RightsController extends BaseController<Window> {
 		List<Rights> rightList = rightsService.getAllRights();
 		allRightsListModel = new ListModelList<>(rightList);
 		rigthsList.setModel(allRightsListModel);
+	}
+
+	public boolean validateInput() {
+		boolean isValid = true;
+		if (rightsKeyText.getValue() == null || rightsKeyText.getValue() == "") {
+			isValid = false;
+			rightsKeyText.setErrorMessage("Valamit be kell irni ");
+		}
+		if (rightsName.getValue() == null || rightsName.getValue() == "") {
+			isValid = false;
+			rightsName.setErrorMessage("Valamit be kell irni ");
+		}
+		if (rightsComment.getValue() == null || rightsComment.getValue() == "") {
+			isValid = false;
+			rightsComment.setErrorMessage("Valamit be kell irni ");
+		}
+		return isValid;
 	}
 
 	private RowRenderer<Rights> rightsRowRenderer() {

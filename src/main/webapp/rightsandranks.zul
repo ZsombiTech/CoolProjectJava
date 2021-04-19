@@ -1,0 +1,37 @@
+<zk>
+	<window apply="hu.my.coolproject.controllers.RigthsandRanksController">
+	 <combobox id="ranksCmbx" width="150px" />
+    <columnlayout height="350px">
+        <columnchildren width="50%">
+            <panel title="Available projects:" border="normal" height="100%">
+                <panelchildren>
+                    <listbox id="left" height="100%" oddRowSclass=" " checkmark="true">
+                        <template name="model">
+                            <listitem label="Hello"  />
+                        </template>
+                    </listbox>
+                </panelchildren>
+            </panel>
+        </columnchildren>
+        <columnchildren width="100px">
+            <vlayout style="text-align: center; margin-top: 70px;" spacing="15px">
+                <button iconSclass="z-icon-arrow-right" tooltiptext="Add Project"
+                        id="jobb"/>
+                <button iconSclass="z-icon-arrow-left" tooltiptext="Remove Project"
+                        id="bal"/>
+            </vlayout>
+        </columnchildren>
+        <columnchildren width="50%">
+            <panel title="Configured projects:" border="normal" height="100%">
+                <panelchildren>
+                    <listbox id="right" height="100%" oddRowSclass=" " checkmark="true">
+                        <template name="model">
+                            <listitem label="Hello"/>
+                        </template>
+                    </listbox>            
+                </panelchildren>
+            </panel>
+        </columnchildren>
+    </columnlayout>
+    </window>
+</zk>

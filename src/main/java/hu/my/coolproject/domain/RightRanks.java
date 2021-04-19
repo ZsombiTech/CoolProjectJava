@@ -8,6 +8,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "rights_ranks")
 public class RightRanks {
+	
 	@EmbeddedId
 	private RightsRankID rightRankID;
 

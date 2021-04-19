@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "ranks")
+@Table(name = "rank")
 public class Ranks implements Serializable {
 	/**
 	 * 

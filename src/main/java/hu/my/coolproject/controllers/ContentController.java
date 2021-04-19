@@ -52,12 +52,11 @@ public class ContentController extends BaseController<Panel> {
 	}
 	@Listen(Events.ON_CLICK + "=#kettes")
 	public void send3() {
-		
-		content.appendChild(Path.getComponent("/rights.zul"));
+		Executions.sendRedirect("/rights.zul");
 	}
 	@Listen(Events.ON_CLICK + "=#harmas")
 	public void send4() {
-			Executions.sendRedirect("/content.zul");
+			Executions.sendRedirect("/rightsandranks.zul");
 		
 	}
 	@Listen(Events.ON_CLICK + "=#about")
