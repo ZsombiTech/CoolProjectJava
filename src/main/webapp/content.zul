@@ -52,8 +52,7 @@
 					</navbar>
 				</west>
 				<center id="content">
-					<label value="Random Szoveg"
-						style="color:gray;font-size:30px" />
+					
 				</center>
 
 			</borderlayout>
