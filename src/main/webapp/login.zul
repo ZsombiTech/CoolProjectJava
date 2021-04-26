@@ -3,7 +3,7 @@
 		spacing="20px">
 		<vlayout>
 			<window id="loginWin"
-				apply="hu.my.coolproject.controllers.LoginController" title="LOGIN"
+				apply="hu.my.coolproject.controllers.LoginController" title="${labels.Login}"
 				style="text-align:center" border="normal" hflex="min">
 				<vbox hflex="min" align="center">
 					<grid hflex="min">
@@ -13,19 +13,18 @@
 						</columns>
 						<rows>
 							<row>
-								Login Name :
+								<label>${labels.Username}:</label>
 								<textbox id="loginName" width="200px" />
 							</row>
 							<row>
-								Password :
+								<label value="${labels.Password}:" />
 								<textbox id="password" type="password"
 									width="200px" />
 							</row>
 						</rows>
 					</grid>
-					<label id="message" sclass="warn" value="&#160;" />
-					<button id="login" label="Login" />
-
+					<space></space>
+					<button id="login" label="${labels.Login}" />
 				</vbox>
 			</window>
 		</vlayout>
