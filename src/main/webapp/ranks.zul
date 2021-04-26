@@ -23,5 +23,12 @@
 		</grid>
 		<space></space>
 		</vbox>
+			<grid hflex="max" id="ranksList">
+			<columns>
+				<column hflex="1" label="Rank" />
+				<column hflex="1" label="Modositas" />
+				<column width="90px" label="Torles" />
+			</columns>
+		</grid>
 	</window>
 </zk>

@@ -2,11 +2,13 @@ package hu.my.coolproject.repository.impl;
 
 import java.util.List;
 
+
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
 import hu.my.coolproject.base.DbSessionProvider;
 import hu.my.coolproject.domain.Ranks;
+import hu.my.coolproject.domain.Rights;
 import hu.my.coolproject.repository.RanksRepository;
 
 @Repository
@@ -30,5 +32,9 @@ public class RanksRepositoryImpl extends DbSessionProvider implements RanksRepos
 		return query.setParameter("id", id).getSingleResult();
 		
 	}
-
+	@Override
+	public void deleteRanks(Ranks ranks) {
+		getCoolProjectSession().delete(ranks);
+		
+	}
 }

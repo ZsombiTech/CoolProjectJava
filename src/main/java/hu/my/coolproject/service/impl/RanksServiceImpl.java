@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import hu.my.coolproject.domain.Ranks;
+import hu.my.coolproject.domain.Rights;
 import hu.my.coolproject.repository.RanksRepository;
 import hu.my.coolproject.service.RanksService;
 
@@ -35,5 +36,9 @@ public class RanksServiceImpl implements RanksService{
 		return ranksRepository.getRankByID(id);
 	}
 	
-	
+	@Override
+	public void deleteRanks(Ranks ranks) {
+		ranksRepository.deleteRanks(ranks);
+		
+	}
 }
