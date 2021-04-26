@@ -5,6 +5,12 @@
 			<window id="loginWin"
 				apply="hu.my.coolproject.controllers.LoginController" title="${labels.Login}"
 				style="text-align:center" border="normal" hflex="min">
+				<combobox id="languageCmbx">
+					<template name="model">
+				        <comboitem label="${each.label}" value="${each.value}"/>
+				    </template>
+				
+				</combobox>
 				<vbox hflex="min" align="center">
 					<grid hflex="min">
 						<columns>
