@@ -36,6 +36,7 @@ public class ContentController extends BaseController<Panel> {
 
 	@Listen(Events.ON_CLICK + "=#signOut")
 	public void signOut(Event event) {
+		logOut();
 		Executions.sendRedirect("/login.zul");
 	}
 	@Listen(Events.ON_CLICK + "=#home")

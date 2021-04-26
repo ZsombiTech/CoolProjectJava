@@ -40,31 +40,29 @@ public class LoginController extends BaseController<Window>{
 		}
 		User user = userService.getUserByLoginName(loginName.getValue());
 		
-		if(user.getPassword().equals(password.getValue())) {
+		if(user != null && user.getPassword().equals(password.getValue())) {
+			login(user);
 			Executions.sendRedirect("/content.zul");
 
-		}else {
+		} else {
 			password.setValue(null);
 			wrongPass();
 		}
-		
-		
 	}
 
 	public boolean validateInput() {
 		boolean isValid = true;
-		if(loginName.getValue() == null || loginName.getValue() == "") {
+		if(loginName.getValue() == null || loginName.getValue() == "") { //Hiba:  loginName.getValue() == ""
 			isValid = false;
 			loginName.setErrorMessage("Valamit be kell irni ");
 		}
-		if(password.getValue() == null || password.getValue() == "") {
+		if(password.getValue() == null || password.getValue() == "") { //Hiba password.getValue() == ""
 			isValid = false;
 			password.setErrorMessage("Valamit be kell irni ");
 		}
 		return isValid;
 	}
     public void wrongPass() {
-        Notification.show("Your password is wrong, please try again!", true);
+        Notification.show("User or password is incorrect, please try again!", true);
     }
-	 
 }

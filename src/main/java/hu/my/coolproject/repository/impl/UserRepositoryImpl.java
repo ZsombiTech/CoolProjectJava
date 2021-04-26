@@ -2,7 +2,8 @@ package hu.my.coolproject.repository.impl;
 
 import java.util.List;
 
-import org.hibernate.query.Query;
+import javax.persistence.NoResultException;
+
 import org.springframework.stereotype.Repository;
 
 import hu.my.coolproject.base.DbSessionProvider;
@@ -26,8 +27,11 @@ public class UserRepositoryImpl extends DbSessionProvider implements UserReposit
 	@Override
 	public User getUserByLoginName(String loginName) {
 		String hql = "SELECT a FROM User a WHERE a.loginName = :loginName";
-		Query<User> query = getCoolProjectSession().createQuery(hql, User.class);
-		return query.setParameter("loginName", loginName).getSingleResult();
+		try {
+			return getCoolProjectSession().createQuery(hql, User.class).setParameter("loginName", loginName).getSingleResult();
+		} catch (NoResultException e) {
+			return null;
+		}
 	}
 
 }
