@@ -5,7 +5,7 @@
 	version="2.5">
 	<display-name>CoolProject</display-name>
 	<welcome-file-list>
-		<welcome-file>login.zul</welcome-file>
+		<welcome-file>content.zul</welcome-file>
 	</welcome-file-list>
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
