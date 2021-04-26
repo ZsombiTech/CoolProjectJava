@@ -41,4 +41,9 @@ public class RanksServiceImpl implements RanksService{
 		ranksRepository.deleteRanks(ranks);
 		
 	}
+
+	@Override
+	public Ranks getRankByName(String rankName) {
+		return ranksRepository.getRankByName(rankName);
+	}
 }

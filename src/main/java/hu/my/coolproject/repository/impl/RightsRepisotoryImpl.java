@@ -2,6 +2,8 @@ package hu.my.coolproject.repository.impl;
 
 import java.util.List;
 
+import javax.persistence.NoResultException;
+
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
@@ -35,5 +37,16 @@ public class RightsRepisotoryImpl extends DbSessionProvider implements RightsRep
 	public void deleteRights(Rights rights) {
 		getCoolProjectSession().delete(rights);
 		
+	}
+
+	@Override
+	public Rights getRightsByKeyText(String rightKeyText) {
+		String hql = "SELECT a FROM Rights a WHERE a.keyText = :keyText";
+		Query<Rights> query = getCoolProjectSession().createQuery(hql, Rights.class);
+		try {
+			return query.setParameter("keyText", rightKeyText).getSingleResult();
+		} catch (NoResultException e) {
+			return null;
+		}
 	}
 }

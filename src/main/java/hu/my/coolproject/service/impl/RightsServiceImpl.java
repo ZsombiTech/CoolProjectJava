@@ -40,6 +40,11 @@ public class RightsServiceImpl implements RightsService{
 		rightsRepository.deleteRights(rights);
 		
 	}
+
+	@Override
+	public Rights getRightsByKeyText(String rightKeyText) {
+		return rightsRepository.getRightsByKeyText(rightKeyText);
+	}
 	
 		
 }

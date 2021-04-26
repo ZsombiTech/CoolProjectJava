@@ -78,11 +78,11 @@ public class LoginController extends BaseController<Window> {
 
 	public boolean validateInput() {
 		boolean isValid = true;
-		if (loginName.getValue() == null || loginName.getValue() == "") { // Hiba: loginName.getValue() == ""
+		if (loginName.getValue() == null || loginName.getValue().equals("")) { 
 			isValid = false;
 			loginName.setErrorMessage(Labels.getLabel(FIELD_IS_REQUIRED));
 		}
-		if (password.getValue() == null || password.getValue() == "") { // Hiba password.getValue() == ""
+		if (password.getValue() == null || password.getValue().equals("")) { 
 			isValid = false;
 			password.setErrorMessage(Labels.getLabel(FIELD_IS_REQUIRED));
 		}

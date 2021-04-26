@@ -2,6 +2,7 @@ package hu.my.coolproject.repository.impl;
 
 import java.util.List;
 
+import javax.persistence.NoResultException;
 
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import hu.my.coolproject.base.DbSessionProvider;
 import hu.my.coolproject.domain.Ranks;
 import hu.my.coolproject.domain.Rights;
+import hu.my.coolproject.domain.User;
 import hu.my.coolproject.repository.RanksRepository;
 
 @Repository
@@ -35,6 +37,18 @@ public class RanksRepositoryImpl extends DbSessionProvider implements RanksRepos
 	@Override
 	public void deleteRanks(Ranks ranks) {
 		getCoolProjectSession().delete(ranks);
+		
+	}
+
+	@Override
+	public Ranks getRankByName(String rankName) {
+		String hql = "SELECT a FROM Ranks a WHERE a.name = :rankName";
+		Query<Ranks> query = getCoolProjectSession().createQuery(hql, Ranks.class);
+		try {
+			return query.setParameter("rankName", rankName).getSingleResult();
+		} catch (NoResultException e) {
+			return null;
+		}
 		
 	}
 }

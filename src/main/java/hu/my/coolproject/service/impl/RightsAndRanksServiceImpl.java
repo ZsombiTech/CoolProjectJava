@@ -16,13 +16,13 @@ public class RightsAndRanksServiceImpl implements RightsAndRanksService{
 	private final RightAndRanksRepository rightAndRanksRepository;
 	
 	
-	public void RightAndRanksServiceImpl(RightAndRanksRepository rightAndRanksRepository) {
+	public RightsAndRanksServiceImpl(RightAndRanksRepository rightAndRanksRepository) {
 		this.rightAndRanksRepository = rightAndRanksRepository;
 	}
 
 	@Override
 	public List<Ranks> getAllRanksID() {
-		return rightAndRanksRepository getAllRanksID();
+		return rightAndRanksRepository.getAllRanksID();
 	}
 	
 }

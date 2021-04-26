@@ -8,6 +8,8 @@ import hu.my.coolproject.domain.Rights;
 
 public interface RanksRepository {
 	public List<Ranks> getAllRanks();
+	
+	public Ranks getRankByName(String rankName);
 
 	public void saveRanks(Ranks ranks);
 

@@ -73,7 +73,7 @@ public class RightsController extends BaseController<Window> {
 
 	public boolean validateInput() {
 		boolean isValid = true;
-		if (rightsKeyText.getValue() == null || rightsKeyText.getValue() == "") {
+		if (rightsKeyText.getValue() == null || rightsKeyText.getValue() == "" || rightsService.getRightsByKeyText(rightsKeyText.getValue()) != null) {
 			isValid = false;
 			rightsKeyText.setErrorMessage("Valamit be kell irni ");
 		}

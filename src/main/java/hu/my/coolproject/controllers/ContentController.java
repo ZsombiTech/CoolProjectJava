@@ -40,21 +40,21 @@ public class ContentController extends BaseController<Panel> {
 		Executions.sendRedirect("/login.zul");
 	}
 	@Listen(Events.ON_CLICK + "=#home")
-	public void send() { // fuggvenynev legyen nevesitve vagy ha nem kell kuka
+	public void home() { // fuggvenynev legyen nevesitve vagy ha nem kell kuka
 			Executions.sendRedirect(CONTENT_PAGE);
 		
 	}
-	@Listen(Events.ON_CLICK + "=#egyes")// "=#egyes" ??  legyen szepen elnevezve :)
-	public void send2() {// fuggvenynev legyen nevesitve vagy ha nem kell kuka
+	@Listen(Events.ON_CLICK + "=#RanksNavigation")// "=#egyes" ??  legyen szepen elnevezve :)
+	public void ranks() {// fuggvenynev legyen nevesitve vagy ha nem kell kuka
 		loadContent(RANKS_PAGE);
 		
 	}
-	@Listen(Events.ON_CLICK + "=#kettes")// "=#kettes" ??  legyen szepen elnevezve :)
-	public void send3() {// fuggvenynev legyen nevesitve vagy ha nem kell kuka
+	@Listen(Events.ON_CLICK + "=#RightsNavigation")// "=#kettes" ??  legyen szepen elnevezve :)
+	public void rights() {// fuggvenynev legyen nevesitve vagy ha nem kell kuka
 		loadContent(RIGHTS_PAGE);
 	}
-	@Listen(Events.ON_CLICK + "=#harmas")// "=#harmas" ??  legyen szepen elnevezve :)
-	public void send4() {// fuggvenynev legyen nevesitve vagy ha nem kell kuka
+	@Listen(Events.ON_CLICK + "=#RightsAndRanks")// "=#harmas" ??  legyen szepen elnevezve :)
+	public void duoble() {// fuggvenynev legyen nevesitve vagy ha nem kell kuka
 		loadContent(RIGHTS_AND_RANKS_PAGE);
 		
 	}

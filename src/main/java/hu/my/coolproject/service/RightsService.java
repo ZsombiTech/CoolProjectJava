@@ -13,4 +13,5 @@ public interface RightsService {
 	
 	public void deleteRights(Rights rights);
 
+	public Rights getRightsByKeyText(String rightKeyText);
 }

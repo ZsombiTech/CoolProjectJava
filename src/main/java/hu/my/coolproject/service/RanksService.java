@@ -13,6 +13,8 @@ public interface RanksService {
 
 	public Ranks getRankByID(long id);
 	
+	public Ranks getRankByName(String rankName);
+	
 	public void deleteRanks(Ranks ranks);
 
 }

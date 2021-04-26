@@ -12,4 +12,6 @@ public interface RightsRepository {
 	public Rights getRightsByID(long id);
 
 	public void deleteRights(Rights rights);
+	
+	public Rights getRightsByKeyText(String rightKeyText);
 }

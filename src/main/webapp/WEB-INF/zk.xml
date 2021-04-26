@@ -41,9 +41,8 @@
 
 <!-- 	<system-config>
         <ui-factory-class>org.zkoss.zk.ui.http.SerializableUiFactory</ui-factory-class>
-        <label-location>/WEB-INF/language/zk_language_hu_HU.properties</label-location>
-        <label-location>/WEB-INF/language/zk_language_hu_HU.properties</label-location>
-        <label-location>/WEB-INF/language/zk_language_en_US.properties</label-location>
+        <label-location>/WEB-INF/zk-label_hu_HU.properties</label-location>
+        <label-location>/WEB-INF/zk-label_en_US.properties</label-location>
     </system-config> -->
 
 </zk>

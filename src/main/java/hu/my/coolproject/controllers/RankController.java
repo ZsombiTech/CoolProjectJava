@@ -30,7 +30,7 @@ public class RankController extends BaseController<Window>{
 	@Wire
 	private Textbox rankTB;
 	@Wire
-	private Grid ranksList;
+	private Grid ranksGrd;
 	
 	private ListModel<Ranks> allRanksListModel;
 	
@@ -39,33 +39,33 @@ public class RankController extends BaseController<Window>{
 	@Override
 	public void doAfterCompose(Window window) throws Exception{
 		super.doAfterCompose(window);
-		ranksList.setRowRenderer(rightsRowRenderer());
+		ranksGrd.setRowRenderer(rightsRowRenderer());
 		refreshRanksList();
 		
 	}
 	
 	@Listen(Events.ON_CLICK + "=#save")
-	public void save(Event event) {
-		Ranks rank = new Ranks();
-		rank.setName(rankTB.getValue());
-		ranksService.saveRanks(rank);
+	public void save(Event event) {	
+		if(ranksService.getRankByName(rankTB.getValue()) == null) {
+			Ranks rank = new Ranks();
+			rank.setName(rankTB.getValue());
+			ranksService.saveRanks(rank);
+			refreshRanksList();
+		}else {
+			rankTB.setErrorMessage("Te gombocfeju, nem szabad ugyanazt beirni");
+		}
 		
-	}
-	
-	@Listen(Events.ON_CLICK + "=#decline")
-	public void deleterow(Event event) {
-
 	}
 	
 	public void refreshRanksList() {
 		List<Ranks> ranksList = ranksService.getAllRanks();
 		allRanksListModel = new ListModelList<>(ranksList);
-		ranksList.setModel(allRanksListModel);
+		ranksGrd.setModel(allRanksListModel);
 	}
 	
 	public boolean validateInput() {
 		boolean isValid = true;
-		if (rankTB.getValue() == null || rankTB.getValue() == "") {
+		if (rankTB.getValue() == null || rankTB.getValue().equals("")) {
 			isValid = false;
 			rankTB.setErrorMessage("Valamit be kell irni ");
 		}
@@ -85,6 +85,7 @@ public class RankController extends BaseController<Window>{
 						refreshRanksList();
 					}
 				});
+				row.appendChild(new Label("modositas"));
 				row.appendChild(remove);
 			}
 
