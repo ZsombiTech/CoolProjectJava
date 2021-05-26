@@ -2,6 +2,7 @@ package hu.my.coolproject.controllers;
 
 import java.util.List;
 
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.event.Events;
@@ -28,7 +29,9 @@ public class RightsController extends BaseController<Window> {
 
 	@Wire
 	private Textbox rightsName;
-
+	
+	private static final String MUST_WRITE = "Must_write";
+	
 	@Wire
 	private Textbox rightsComment;
 
@@ -75,15 +78,15 @@ public class RightsController extends BaseController<Window> {
 		boolean isValid = true;
 		if (rightsKeyText.getValue() == null || rightsKeyText.getValue() == "" || rightsService.getRightsByKeyText(rightsKeyText.getValue()) != null) {
 			isValid = false;
-			rightsKeyText.setErrorMessage("Valamit be kell irni ");
+			rightsKeyText.setErrorMessage(Labels.getLabel(MUST_WRITE));
 		}
 		if (rightsName.getValue() == null || rightsName.getValue() == "") {
 			isValid = false;
-			rightsName.setErrorMessage("Valamit be kell irni ");
+			rightsName.setErrorMessage(Labels.getLabel(MUST_WRITE));
 		}
 		if (rightsComment.getValue() == null || rightsComment.getValue() == "") {
 			isValid = false;
-			rightsComment.setErrorMessage("Valamit be kell irni ");
+			rightsComment.setErrorMessage(Labels.getLabel(MUST_WRITE));
 		}
 		return isValid;
 	}

@@ -4,7 +4,7 @@
 		<grid>
 			<rows>
 				<row>
-					<label value="Rank:  " width="150px" />
+					<label value="${labels.Rank}:  " width="150px" />
 					<hlayout>
 						<textbox id="rankTB" width="150px"
 							tabindex="1" />
@@ -14,7 +14,7 @@
 				<row>
 					<cell colspan="2" style="text-align:center">
 						<vlayout>
-							<button label="Submit" id="save"
+							<button label="${labels.Submit}" id="save"
 								width="100px" height="30px" />
 						</vlayout>
 					</cell>
@@ -25,9 +25,9 @@
 		</vbox>
 			<grid hflex="max" id="ranksGrd">
 			<columns>
-				<column hflex="1" label="Rank" />
-				<column hflex="1" label="Modositas" />
-				<column width="90px" label="Torles" />
+				<column hflex="1" label="${labels.Rank}" />
+				<column hflex="1" label="${labels.Change}" />
+				<column width="90px" label="${labels.Delete}" />
 			</columns>
 		</grid>
 	</window>

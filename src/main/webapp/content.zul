@@ -28,7 +28,7 @@
 
 								<cell align="right">
 									<button id="signOut">
-										Kijelentkezes
+										${labels.logOut}
 									</button>
 								</cell>
 
@@ -39,15 +39,15 @@
 
 				<west size="14%" maxsize="180" vflex="1">
 					<navbar orient="vertical" width="330">
-						<navitem label="Home" id="home" iconSclass="z-icon-home" />
-						<nav label="Get Started"
+						<navitem label="${labels.Home}" id="home" iconSclass="z-icon-home" />
+						<nav label="${labels.Choises}"
 							iconSclass="z-icon-th-list" badgeText="3">
 							<navitem id="RanksNavigation" label="${labels.Ranks}" />
 							<navitem id="RightsNavigation" label="${labels.Rights}" />
 							<navitem id="RightsAndRanks" label="${labels.Rights_and_ranks}" />
 						</nav>
-						<navitem label="About" id="about" iconSclass="z-icon-flag" />
-						<navitem id="contact" label="Contact"
+						<navitem label="${labels.About}" id="about" iconSclass="z-icon-flag" />
+						<navitem id="contact" label="${labels.Contact}"
 							iconSclass="z-icon-envelope" />
 					</navbar>
 				</west>

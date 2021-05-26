@@ -2,6 +2,7 @@ package hu.my.coolproject.controllers;
 
 import java.util.List;
 
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
@@ -32,6 +33,9 @@ public class RankController extends BaseController<Window>{
 	@Wire
 	private Grid ranksGrd;
 	
+	private static final String NOT_ALLOWED = "Not_allowed";
+	private static final String MUST_WRITE = "Must_write";
+	private static final String CHANGE = "Change";
 	private ListModel<Ranks> allRanksListModel;
 	
 	@WireVariable("ranksServiceImpl")
@@ -52,7 +56,7 @@ public class RankController extends BaseController<Window>{
 			ranksService.saveRanks(rank);
 			refreshRanksList();
 		}else {
-			rankTB.setErrorMessage("Te gombocfeju, nem szabad ugyanazt beirni");
+			rankTB.setErrorMessage(Labels.getLabel(NOT_ALLOWED));
 		}
 		
 	}
@@ -67,7 +71,7 @@ public class RankController extends BaseController<Window>{
 		boolean isValid = true;
 		if (rankTB.getValue() == null || rankTB.getValue().equals("")) {
 			isValid = false;
-			rankTB.setErrorMessage("Valamit be kell irni ");
+			rankTB.setErrorMessage(Labels.getLabel(MUST_WRITE));
 		}
 		return isValid;
 	}
@@ -85,7 +89,7 @@ public class RankController extends BaseController<Window>{
 						refreshRanksList();
 					}
 				});
-				row.appendChild(new Label("modositas"));
+				row.appendChild(new Label(Labels.getLabel(CHANGE)));
 				row.appendChild(remove);
 			}
 
