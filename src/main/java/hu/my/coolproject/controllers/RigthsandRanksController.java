@@ -10,7 +10,6 @@ import org.zkoss.zk.ui.util.Clients;
 import org.zkoss.zul.Combobox;
 import org.zkoss.zul.Comboitem;
 import org.zkoss.zul.ComboitemRenderer;
-import org.zkoss.zul.ListModel;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Listbox;
 import org.zkoss.zul.Window;
@@ -46,14 +45,12 @@ public class RigthsandRanksController extends BaseController<Window> {
 	public void doAfterCompose(Window window) throws Exception {
 		super.doAfterCompose(window);
 		initRanksCmbx();
-
+		left.setModel(leftListModel);
+		right.setModel(rightListModel);
 		leftListModel
 				.addAll(rightsAndRanksService.getRightsWithoutRanksRights(rightAndsRanksList.getElementAt(0).getId()));
 		rightListModel
-		.addAll(rightsAndRanksService.getRightsWithRanksRights(rightAndsRanksList.getElementAt(0).getId()));
-
-		left.setModel(leftListModel);
-		right.setModel(rightAndsRanksList);
+				.addAll(rightsAndRanksService.getRightsWithRanksRights(rightAndsRanksList.getElementAt(0).getId()));
 
 	}
 
@@ -62,7 +59,7 @@ public class RigthsandRanksController extends BaseController<Window> {
 		rightAndsRanksList.addAll(rankList);
 		ranksCmbx.setModel(rightAndsRanksList);
 		ranksCmbx.setItemRenderer(ranksComboRenderer());
-
+		rightAndsRanksList.addToSelection(rightAndsRanksList.get(0));
 	}
 
 	private void addItems() {
@@ -80,7 +77,6 @@ public class RigthsandRanksController extends BaseController<Window> {
 			@Override
 			public void render(Comboitem item, Ranks data, int index) throws Exception {
 				item.setLabel(data.getName());
-
 			}
 		};
 	}
@@ -110,4 +106,5 @@ public class RigthsandRanksController extends BaseController<Window> {
 	 * 
 	 * public ListModelList<String> getRightListModel() { return rightListModel; }
 	 */
+
 }

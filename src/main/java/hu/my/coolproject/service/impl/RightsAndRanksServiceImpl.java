@@ -7,7 +7,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import hu.my.coolproject.domain.Ranks;
 import hu.my.coolproject.domain.Rights;
-import hu.my.coolproject.repository.RanksRepository;
 import hu.my.coolproject.repository.RightAndRanksRepository;
 import hu.my.coolproject.service.RightsAndRanksService;
 

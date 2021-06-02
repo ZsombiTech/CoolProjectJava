@@ -19,7 +19,7 @@ public class RightAndRanksRepositoryImpl  extends DbSessionProvider implements R
 	public List<Rights> getRightsWithoutRanksRights(long ranksId) {
 		String hql = " SELECT r "+
 				" FROM Rights r "+
-				" LEFT JOIN RightRanks rr "+
+				" LEFT JOIN RightRanks rr on r.id = rr.rightRankID.rights.id"+
 				" WHERE rr.rightRankID.ranks.id <> :RanksID OR rr.rightRankID.ranks.id IS null";
 		return getCoolProjectSession().createQuery(hql, Rights.class).setParameter("RanksID", ranksId).getResultList();
 	}
@@ -27,7 +27,7 @@ public class RightAndRanksRepositoryImpl  extends DbSessionProvider implements R
 	public List<Rights> getRightsWithRanksRights(long ranksId) {
 		String hql = "SELECT r "+
 				" FROM Rights r "+
-				" LEFT JOIN RightRanks rr "+
+				" LEFT JOIN RightRanks rr on r.id = rr.rightRankID.rights.id"+
 				" WHERE rr.rightRankID.ranks.id = :RanksID ";
 		return getCoolProjectSession().createQuery(hql, Rights.class).setParameter("RanksID", ranksId).getResultList();
 	}
