@@ -12,13 +12,13 @@ import org.zkoss.zul.Comboitem;
 import org.zkoss.zul.ComboitemRenderer;
 import org.zkoss.zul.ListModel;
 import org.zkoss.zul.ListModelList;
-import org.zkoss.zul.RowRenderer;
+import org.zkoss.zul.Listbox;
 import org.zkoss.zul.Window;
 
 import hu.my.coolproject.domain.Ranks;
 import hu.my.coolproject.domain.Rights;
-import hu.my.coolproject.domain.User;
 import hu.my.coolproject.service.RanksService;
+import hu.my.coolproject.service.RightsAndRanksService;
 
 public class RigthsandRanksController extends BaseController<Window> {
 
@@ -27,23 +27,41 @@ public class RigthsandRanksController extends BaseController<Window> {
 	@Wire
 	private Combobox ranksCmbx;
 
+	@Wire
+	private Listbox left;
+	@Wire
+	private Listbox right;
+
 	@WireVariable("ranksServiceImpl")
 	private transient RanksService ranksService;
 
-	private ListModel<Rights> rightAndsRanksList;
+	@WireVariable("rightsAndRanksServiceImpl")
+	private transient RightsAndRanksService rightsAndRanksService;
 
-	@Override
+	private ListModelList<Ranks> rightAndsRanksList = new ListModelList<>();
+
+	private ListModelList<Rights> leftListModel = new ListModelList<>();
+	private ListModelList<Rights> rightListModel = new ListModelList<>();
+
 	public void doAfterCompose(Window window) throws Exception {
 		super.doAfterCompose(window);
 		initRanksCmbx();
-		
+
+		leftListModel
+				.addAll(rightsAndRanksService.getRightsWithoutRanksRights(rightAndsRanksList.getElementAt(0).getId()));
+		rightListModel
+		.addAll(rightsAndRanksService.getRightsWithRanksRights(rightAndsRanksList.getElementAt(0).getId()));
+
+		left.setModel(leftListModel);
+		right.setModel(rightAndsRanksList);
+
 	}
 
 	private void initRanksCmbx() {
 		List<Ranks> rankList = ranksService.getAllRanks();
-		rightAndsRanksList = new ListModelList(rankList);
+		rightAndsRanksList.addAll(rankList);
 		ranksCmbx.setModel(rightAndsRanksList);
-		ranksCmbx.setItemRenderer( ranksComboRenderer());
+		ranksCmbx.setItemRenderer(ranksComboRenderer());
 
 	}
 
@@ -62,7 +80,7 @@ public class RigthsandRanksController extends BaseController<Window> {
 			@Override
 			public void render(Comboitem item, Ranks data, int index) throws Exception {
 				item.setLabel(data.getName());
-				
+
 			}
 		};
 	}

@@ -66,4 +66,13 @@ public class BaseController <T extends Component> extends SelectorComposer<T> {
     	//Locales.setThreadLocal(locale);
     	Executions.sendRedirect(null);
     }
+    
+    public String getLocale() throws IOException {
+    	Session session = Sessions.getCurrent();
+    	if(session.getAttribute(Attributes.PREFERRED_LOCALE) == null) {
+    		return "hu";
+    	}
+    	Locale locale = (Locale) session.getAttribute(Attributes.PREFERRED_LOCALE);
+    	return locale.getLanguage().substring(0,2);
+    }
 }

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import hu.my.coolproject.domain.Ranks;
+import hu.my.coolproject.domain.Rights;
 import hu.my.coolproject.repository.RanksRepository;
 import hu.my.coolproject.repository.RightAndRanksRepository;
 import hu.my.coolproject.service.RightsAndRanksService;
@@ -23,6 +24,16 @@ public class RightsAndRanksServiceImpl implements RightsAndRanksService{
 	@Override
 	public List<Ranks> getAllRanksID() {
 		return rightAndRanksRepository.getAllRanksID();
+	}
+
+	@Override
+	public List<Rights> getRightsWithoutRanksRights(long ranksId) {
+		return  rightAndRanksRepository.getRightsWithoutRanksRights(ranksId);
+	}
+
+	@Override
+	public List<Rights> getRightsWithRanksRights(long ranksId) {
+		return  rightAndRanksRepository.getRightsWithRanksRights(ranksId);
 	}
 	
 }

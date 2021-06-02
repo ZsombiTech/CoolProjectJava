@@ -3,10 +3,10 @@
 	<panel vflex="1" hflex="1"
 		apply=" hu.my.coolproject.controllers.ContentController">
 		<panelchildren>
-			<borderlayout>
+			<borderlayout >
 				<north style="font-size: 20px" maxsize="250" size="60%"
-					height="70px">
-					<grid style="border:0" >
+					height="100px" vflex="min">
+					<grid style="border:0">
 						<columns>
 							<column></column>
 							<column hflex="min"></column>
@@ -24,6 +24,14 @@
 									<label id="userName" value="ss"
 										style="color:gray;font-size:33px">
 									</label>
+									<space></space>
+									<combobox id="languageCmbx">
+										<template name="model">
+											<comboitem
+												label="${each.label}" value="${each.value}" />
+										</template>
+
+									</combobox>
 								</cell>
 
 								<cell align="right">
@@ -39,20 +47,25 @@
 
 				<west size="14%" maxsize="180" vflex="1">
 					<navbar orient="vertical" width="330">
-						<navitem label="${labels.Home}" id="home" iconSclass="z-icon-home" />
+						<navitem label="${labels.Home}" id="home"
+							iconSclass="z-icon-home" />
 						<nav label="${labels.Choises}"
 							iconSclass="z-icon-th-list" badgeText="3">
-							<navitem id="RanksNavigation" label="${labels.Ranks}" />
-							<navitem id="RightsNavigation" label="${labels.Rights}" />
-							<navitem id="RightsAndRanks" label="${labels.Rights_and_ranks}" />
+							<navitem id="RanksNavigation"
+								label="${labels.Ranks}" />
+							<navitem id="RightsNavigation"
+								label="${labels.Rights}" />
+							<navitem id="RightsAndRanks"
+								label="${labels.Rights_and_ranks}" />
 						</nav>
-						<navitem label="${labels.About}" id="about" iconSclass="z-icon-flag" />
+						<navitem label="${labels.About}" id="about"
+							iconSclass="z-icon-flag" />
 						<navitem id="contact" label="${labels.Contact}"
 							iconSclass="z-icon-envelope" />
 					</navbar>
 				</west>
 				<center id="content">
-					
+
 				</center>
 
 			</borderlayout>
