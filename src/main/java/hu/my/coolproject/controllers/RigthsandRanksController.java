@@ -1,9 +1,13 @@
 package hu.my.coolproject.controllers;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
 import org.zkoss.zk.ui.annotation.Command;
+import org.zkoss.zk.ui.event.Events;
+import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zk.ui.select.annotation.WireVariable;
 import org.zkoss.zk.ui.util.Clients;
@@ -15,7 +19,9 @@ import org.zkoss.zul.Listbox;
 import org.zkoss.zul.Window;
 
 import hu.my.coolproject.domain.Ranks;
+import hu.my.coolproject.domain.RightRanks;
 import hu.my.coolproject.domain.Rights;
+import hu.my.coolproject.domain.RightsRankID;
 import hu.my.coolproject.service.RanksService;
 import hu.my.coolproject.service.RightsAndRanksService;
 
@@ -61,7 +67,7 @@ public class RigthsandRanksController extends BaseController<Window> {
 		ranksCmbx.setItemRenderer(ranksComboRenderer());
 		rightAndsRanksList.addToSelection(rightAndsRanksList.get(0));
 	}
-
+	
 	private void addItems() {
 		ranksCmbx.setModel(rightAndsRanksList);
 	}
@@ -81,13 +87,26 @@ public class RigthsandRanksController extends BaseController<Window> {
 		};
 	}
 
-	@Command
+	@Listen(Events.ON_CLICK + "=#jobb")
 	public void addProjects() {
+		Set<Rights> selectedRights = leftListModel.getSelection();
 
+		RightRanks rightRanks = new RightRanks();
+		RightsRankID id = new RightsRankID();
+		
+		List<Rights> selectedRightsArray = new ArrayList<>(selectedRights);
+		id.setRights(selectedRightsArray.get(0));
+		id.setRanks(rightAndsRanksList.get(ranksCmbx.getSelectedIndex()));
+		rightRanks.setRightRankID(id);
+		rightsAndRanksService.saveRightsandRanks(rightRanks);
+		
+		rightListModel.addAll(selectedRights);
+		leftListModel.removeAll(selectedRights);
 	}
 
 	@Command
 	public void removeProjects() {
+	
 
 	}
 
@@ -106,5 +125,17 @@ public class RigthsandRanksController extends BaseController<Window> {
 	 * 
 	 * public ListModelList<String> getRightListModel() { return rightListModel; }
 	 */
+	
+    @Listen(Events.ON_SELECT + "=#ranksCmbx")
+    public void selectName() throws IOException {
+        refreshLists();
+    }
+	
+    public void refreshLists() {
+        rightListModel.clear();
+        leftListModel.clear();
+        rightListModel.addAll(rightsAndRanksService.getRightsWithRanksRights(rightAndsRanksList.get(ranksCmbx.getSelectedIndex()).getId()));
+        leftListModel.addAll(rightsAndRanksService.getRightsWithoutRanksRights(rightAndsRanksList.get(ranksCmbx.getSelectedIndex()).getId()));
+    }
 
 }

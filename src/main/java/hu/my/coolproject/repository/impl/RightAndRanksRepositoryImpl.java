@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import hu.my.coolproject.base.DbSessionProvider;
 import hu.my.coolproject.domain.Ranks;
+import hu.my.coolproject.domain.RightRanks;
 import hu.my.coolproject.domain.Rights;
 import hu.my.coolproject.repository.RightAndRanksRepository;
 
@@ -30,5 +31,14 @@ public class RightAndRanksRepositoryImpl  extends DbSessionProvider implements R
 				" LEFT JOIN RightRanks rr on r.id = rr.rightRankID.rights.id"+
 				" WHERE rr.rightRankID.ranks.id = :RanksID ";
 		return getCoolProjectSession().createQuery(hql, Rights.class).setParameter("RanksID", ranksId).getResultList();
+	}
+	
+	@Override
+	public void saveRightsandRanks(RightRanks rightRanks) {
+		getCoolProjectSession().merge(rightRanks);
+	}
+	@Override
+	public void deleteRightsandRanks(RightRanks rightRanks) {
+		getCoolProjectSession().delete(rightRanks);
 	}
 }
