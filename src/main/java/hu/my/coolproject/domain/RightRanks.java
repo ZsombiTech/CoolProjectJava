@@ -13,18 +13,10 @@ public class RightRanks {
 	private RightsRankID rightRankID;
 
 	@Column(name = "READ_RIGHT", nullable = false)
-	private String readRight;
+	private boolean readRight;
 
-	@Column(name = "MODFIFY_RIGHT", nullable = false)
-	private String modifyRight;
-
-	public String getReadRight() {
-		return readRight;
-	}
-
-	public void setReadRight(String readRight) {
-		this.readRight = readRight;
-	}
+	@Column(name = "MODIFY_RIGHT", nullable = false)
+	private boolean modifyRight;
 
 	public RightsRankID getRightRankID() {
 		return rightRankID;
@@ -34,11 +26,19 @@ public class RightRanks {
 		this.rightRankID = rightRankID;
 	}
 
-	public String getModifyRight() {
+	public boolean isReadRight() {
+		return readRight;
+	}
+
+	public void setReadRight(boolean readRight) {
+		this.readRight = readRight;
+	}
+
+	public boolean isModifyRight() {
 		return modifyRight;
 	}
 
-	public void setModifyRight(String modifyRight) {
+	public void setModifyRight(boolean modifyRight) {
 		this.modifyRight = modifyRight;
 	}
 
